@@ -1,0 +1,25 @@
+zuul:
+  routes:
+    user:
+      url: http://localhost:9090
+    token:
+      url: http://localhost:9090
+    order:
+      url: http://localhost:9080
+  sensitive-headers:
+
+spring:
+  application:
+    name: gateway
+    
+server:
+  port: 9070  
+  
+security:
+  oauth2:
+    client:
+      client-id: gateway
+      client-secret: 123456
+    resource:
+      jwt:
+        key-uri: http://auth.imooc.com:9090/oauth/token_key
