@@ -12,6 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 /**
+ * 校验用户名密码权限
  * @author jojo
  *
  */
@@ -26,6 +27,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	 */
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		// 读取数据库
 		return User.withUsername(username)
 					.password(passwordEncoder.encode("123456"))
 					.authorities("ROLE_ADMIN")

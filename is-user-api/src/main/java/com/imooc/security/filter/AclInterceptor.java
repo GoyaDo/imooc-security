@@ -14,12 +14,15 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import com.imooc.security.user.UserInfo;
 
 /**
+ * 请求权限控制
+ * HandlerInterceptorAdapter会在filter之后执行
  * @author jojo
  *
  */
 //@Component
 public class AclInterceptor extends HandlerInterceptorAdapter {
-	
+
+	// 设置不用验证的接口
 	private String[] permitUrls = new String[] {"/users/login"};
 
 	@Override

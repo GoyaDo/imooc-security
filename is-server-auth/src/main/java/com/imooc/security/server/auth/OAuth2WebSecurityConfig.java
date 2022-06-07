@@ -16,6 +16,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 
 /**
+ * web应用安全配置适配器
  * @author jojo
  *
  */
@@ -33,13 +34,15 @@ public class OAuth2WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	public BCryptPasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
-	
+
+
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userDetailsService)
 			.passwordEncoder(passwordEncoder());
 	}
-	
+
+	// 暴露AuthenticationManager
 	@Bean
 	@Override
 	public AuthenticationManager authenticationManagerBean() throws Exception {

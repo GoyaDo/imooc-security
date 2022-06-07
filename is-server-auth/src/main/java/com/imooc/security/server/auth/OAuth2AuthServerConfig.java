@@ -23,6 +23,7 @@ import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFacto
 import org.springframework.session.jdbc.config.annotation.web.http.EnableJdbcHttpSession;
 
 /**
+ * 认证授权服务器配置
  * @author jojo
  *
  */
@@ -63,7 +64,12 @@ public class OAuth2AuthServerConfig extends AuthorizationServerConfigurerAdapter
 			.tokenEnhancer(jwtTokenEnhancer())
 			.authenticationManager(authenticationManager);
 	}
-	
+
+	/**
+	 * 客户端详情服务配置
+	 * @param clients
+	 * @throws Exception
+	 */
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 		clients.jdbc(dataSource);
